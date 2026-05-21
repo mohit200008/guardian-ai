@@ -1,105 +1,164 @@
 # Guardian AI
 
-**AI-powered digital trust and fraud prevention** — protects users from phishing, scam messages, fake websites, urgency manipulation, and AI-driven fraud.
+> An AI-powered digital trust shield — helping people spot scams before they click, pay, or share.
 
-## Phase 1 (Current): Foundation + Threat Scan Workflow
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwindcss&logoColor=white" alt="Tailwind" />
+  <img src="https://img.shields.io/badge/Node.js-Express-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node" />
+  <img src="https://img.shields.io/badge/Gemini-Google%20AI-4285F4?style=flat-square&logo=google&logoColor=white" alt="Gemini" />
+</p>
 
-- Monorepo: `client/` (React + Vite + Tailwind) + `server/` (Express + Gemini)
-- **Primary demo flow**: paste suspicious message or URL → AI analysis → trust score, threats, explanation, recovery steps
-- Production-minded: validation, rate limiting, helmet, structured prompts, JSON responses
+---
 
-## Architecture
+## The Problem
 
-```
-hackathon/
-├── client/                 # Frontend (Vercel)
-│   └── src/
-│       ├── api/            # HTTP layer — talks to /api via proxy
-│       ├── components/
-│       │   ├── analysis/   # Trust score, threats, explanation UI
-│       │   ├── layout/     # Shell, sidebar
-│       │   └── ui/         # Reusable primitives
-│       ├── hooks/          # useAnalysis state machine
-│       ├── pages/          # Dashboard (main screen)
-│       └── utils/
-├── server/                 # Backend API
-│   └── src/
-│       ├── config/         # Env + constants
-│       ├── middleware/     # Errors, validation
-│       ├── prompts/        # Gemini system prompts (versioned)
-│       ├── routes/         # REST endpoints
-│       └── services/       # Gemini + threat orchestration
-└── package.json            # Root dev orchestration
-```
+Online fraud is everywhere — and it’s getting harder to catch.
 
-### Why this structure?
+- Phishing links disguised as banks, delivery apps, and government sites  
+- Scam SMS and emails that pressure you to act *right now*  
+- Fake websites built to steal passwords and payment details  
+- Spoofed senders pretending to be someone you trust  
+- AI-generated messages that sound more convincing than ever  
 
-| Decision | Reason |
-|----------|--------|
-| **Separate client/server** | Independent deploy (Vercel + Railway/Render), clear API contract for judges |
-| **Prompts in `/prompts`** | Tune fraud detection without touching route logic — fast iteration during hackathon |
-| **Services layer** | `threatAnalyzer` normalizes AI output; routes stay thin |
-| **JSON schema in prompts** | Gemini `responseMimeType: application/json` → predictable UI binding |
-| **Vite proxy in dev** | No CORS friction; production uses `VITE_API_URL` |
+Most people don’t have a security team. They need **instant, plain-language guidance** when something feels off.
 
-### API flow
+---
 
-```
-Browser → POST /api/analyze/message | /url
-       → validate (Zod)
-       → threatAnalyzer → Gemini (structured JSON)
-       → normalize trust score + threats
-       → JSON { success, data }
-```
+## Our Solution
 
-## Quick start
+**Guardian AI** is a digital safety assistant that analyzes suspicious content and explains the risk in human terms — not security jargon.
 
-1. **Gemini API key** — [Google AI Studio](https://aistudio.google.com/apikey)
+We’re building a system that:
 
-2. **Server env**
+- Scores how trustworthy a message or link appears  
+- Surfaces hidden red flags users often miss  
+- Explains *why* something looks dangerous  
+- Offers practical next steps when risk is high  
+
+The goal: make fraud prevention feel as simple as running a spell-check — fast, clear, and trustworthy.
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|----------------|
+| **Frontend** | React, Vite, Tailwind CSS, Framer Motion |
+| **Backend** | Node.js, Express |
+| **AI** | Google Gemini (via AI Studio) |
+| **Deploy** | Vercel (client), API hosting TBD |
+| **Optional** | Firebase / Supabase for history & auth |
+
+---
+
+## What It Does
+
+Guardian AI acts as your **second pair of eyes** on the internet.
+
+Paste something suspicious — a text, email snippet, or URL — and the app helps you decide whether it’s safe to trust. You get a clear trust signal, threat highlights, and an explanation you can actually understand.
+
+**Core capabilities** *(in development)*:
+
+| Feature | Description |
+|---------|-------------|
+| Scam message analyzer | Detect urgency tricks, impersonation, and common scam patterns |
+| URL trust analyzer | Flag risky links and look-alike domains |
+| Trust score | Quick at-a-glance safety rating |
+| Explainable AI | Plain-language breakdown of what went wrong |
+| Recovery guidance | What to do if you may have been targeted |
+
+> We’re iterating phase-by-phase. Not every feature is public yet — follow the repo for updates.
+
+---
+
+## Screenshots
+
+<!-- Add your screenshots below. Recommended: dashboard, scan results, trust score, mobile view -->
+
+<p align="center">
+  <i>Screenshots coming soon</i>
+</p>
+
+<!--
+### Dashboard
+![Dashboard](./docs/screenshots/dashboard.png)
+
+### Threat Scan Results
+![Scan Results](./docs/screenshots/scan-results.png)
+
+### Mobile View
+![Mobile](./docs/screenshots/mobile.png)
+-->
+
+---
+
+## Getting Started
+
+<details>
+<summary><strong>Local setup (contributors)</strong></summary>
+
+<br>
+
+1. Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey)
+
+2. Configure the server:
 
 ```bash
 cd server
 cp .env.example .env
-# Edit .env — set GEMINI_API_KEY=...
-npm install
+# Set GEMINI_API_KEY=your_key
 ```
 
-3. **Install root + client**
+3. Install and run:
 
 ```bash
-cd ..
 npm install
 npm run install:all
-```
-
-4. **Run both**
-
-```bash
 npm run dev
 ```
 
-- Client: http://localhost:5173
-- API: http://localhost:3001/api/health
+- App: http://localhost:5173  
+- API health: http://localhost:3001/api/health  
 
-5. **Demo**: click *Load demo phishing message* → **Run Threat Scan**
+</details>
 
-## Roadmap (phases)
+---
 
-| Phase | Focus |
-|-------|--------|
-| **1** ✅ | Scaffold, Threat Scan UI, Gemini integration |
-| **2** | Scan history, export report, polish animations |
-| **3** | Firebase/Supabase optional persistence |
-| **4** | Vercel deploy + env docs |
-| **5** | Browser extension / share API (stretch) |
+## Contributing
 
-## Tech stack
+Contributions are welcome — especially during hackathon season.
 
-- React 19, Tailwind CSS 4, Framer Motion, Lucide
-- Node.js, Express, Zod, `@google/generative-ai`
-- Gemini 2.0 Flash (JSON mode)
+1. **Fork** the repository  
+2. **Create** a branch: `git checkout -b feature/your-feature`  
+3. **Commit** your changes with a clear message  
+4. **Push** and open a **Pull Request**
+
+### Guidelines
+
+- Keep PRs focused — one feature or fix per PR  
+- Match existing code style (modular components, clean API layer)  
+- Do **not** commit secrets (`.env`, API keys)  
+- Update README screenshots if you change the UI significantly  
+
+### Ideas to contribute
+
+- UI polish and accessibility  
+- Additional scam pattern detection  
+- Scan history & export  
+- Deployment configs (Vercel, Railway, etc.)  
+- Tests for API validation  
+
+Questions or ideas? Open an [issue](https://github.com/mohit200008/guardian-ai/issues).
+
+---
 
 ## License
 
-MIT — hackathon use
+MIT — built for learning and hackathon use.
+
+---
+
+<p align="center">
+  <strong>Guardian AI</strong> — because everyone deserves a digital trust shield.
+</p>
