@@ -171,3 +171,7 @@ MIT — built for learning and hackathon use.
 <p align="center">
   <strong>Guardian AI</strong> — because everyone deserves a digital trust shield.
 </p>
+
+<p align="center">
+  <sub>Built by <strong>Mohit Lamba</strong></sub>
+</p>
