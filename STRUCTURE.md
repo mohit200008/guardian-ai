@@ -40,7 +40,13 @@ backend/
 │   ├── config/              # env, constants
 │   ├── controllers/         # Request handlers (MVC)
 │   ├── routes/              # Route definitions
-│   ├── services/            # Gemini + threat analysis
+│   ├── services/
+│   │   ├── geminiService.js
+│   │   ├── manipulationDetectionService.js
+│   │   ├── urlThreatIntelService.js
+│   │   ├── threatIntelMatchService.js
+│   │   ├── trustScoreEngine.js
+│   │   └── threatAnalyzerService.js
 │   ├── middleware/          # validate, errorHandler
 │   ├── utils/               # trustLevel, prompts
 │   ├── app.js               # Express app setup
@@ -59,3 +65,4 @@ backend/
 | `/analyze/url` | `POST /api/analyze/url` |
 | `/results` | — |
 | — | `GET /api/health` |
+| — | `GET /api/threats/demo` |

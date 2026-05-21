@@ -1,0 +1,106 @@
+{
+  "source": "Curated from SMS Spam Collection & Phishing URL dataset patterns (Kaggle-inspired)",
+  "threats": [
+    {
+      "id": "sbi-banking",
+      "title": "Fake SBI Alert",
+      "category": "Banking Scam",
+      "icon": "building",
+      "message": "SBI ALERT: Your account ending 4521 will be SUSPENDED today due to KYC non-compliance. Verify immediately: http://onlinesbi-secure-kyc.xyz/verify\n\nFailure to verify within 2 hours will result in permanent block. -SBI Security Team",
+      "tactics": ["Urgency Pressure", "Fear Tactic", "Authority Impersonation"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["urgent", "suspended", "verify", "kyc", "click", "failure to verify"]
+    },
+    {
+      "id": "hdfc-payment",
+      "title": "HDFC Payment Fraud Alert",
+      "category": "Payment Scam",
+      "icon": "wallet",
+      "message": "HDFC BANK: Suspicious transaction of Rs.48,999 detected. If NOT done by you, confirm now: https://hdfc-secure-verify.net/stop\n\nDo NOT ignore. Account will be frozen permanently.",
+      "tactics": ["Financial Threat", "Urgency Pressure", "Fear Tactic"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["suspicious", "confirm", "frozen", "verify", "transaction"]
+    },
+    {
+      "id": "uidai-kyc",
+      "title": "Fake UIDAI KYC Notice",
+      "category": "KYC Scam",
+      "icon": "id",
+      "message": "GOVT KYC NOTICE: Your PAN-Aadhaar link expires TODAY. Update at https://uidai-kyc-update.xyz/verify or SIM and bank services will be blocked.\n\nThis is mandatory from RBI guidelines.",
+      "tactics": ["Authority Impersonation", "Urgency Pressure", "Fear Tactic"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["kyc", "expires", "mandatory", "blocked", "verify", "rbi"]
+    },
+    {
+      "id": "amazon-delivery",
+      "title": "Amazon Delivery Fee Scam",
+      "category": "Delivery Scam",
+      "icon": "package",
+      "message": "Amazon: Your package delivery FAILED. Pay Rs.49 re-delivery fee within 1 hour: http://amazon-redelivery-fee.in/pay\n\nIgnore if already paid. Track: amzn-delv-48291",
+      "tactics": ["Urgency Pressure", "Authority Impersonation"],
+      "riskLevel": "Dangerous",
+      "suspiciousKeywords": ["failed", "pay", "within 1 hour", "fee"]
+    },
+    {
+      "id": "lottery-reward",
+      "title": "Lottery Winner Scam",
+      "category": "Reward Scam",
+      "icon": "gift",
+      "message": "CONGRATULATIONS! You have won Rs.25,00,000 in Flipkart Mega Draw. Claim your prize NOW: http://flipkart-prize-claim.xyz/winner\n\nSend processing fee Rs.4999 to receive amount. Limited time offer!",
+      "tactics": ["Suspicious Reward Offer", "Urgency Pressure", "Financial Threat"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["won", "claim", "prize", "limited time", "processing fee"]
+    },
+    {
+      "id": "paypal-credential",
+      "title": "PayPal Credential Harvest",
+      "category": "Credential Harvesting",
+      "icon": "wallet",
+      "message": "PayPal Security: Unusual sign-in from Mumbai, India. Your account is LIMITED. Verify identity within 2 hours: http://paypa1-secure-login.xyz/account\n\nFailure to verify = permanent closure.",
+      "tactics": ["Authority Impersonation", "Fear Tactic", "Urgency Pressure"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["limited", "verify", "unusual", "closure", "security"]
+    },
+    {
+      "id": "netflix-billing",
+      "title": "Netflix Billing Phish",
+      "category": "Payment Scam",
+      "icon": "card",
+      "message": "Netflix: Payment declined for your subscription. Update billing within 24 hours to avoid service termination: https://netflix-billing-update.xyz/pay\n\nYour account will be deleted if not updated.",
+      "tactics": ["Financial Threat", "Urgency Pressure", "Fear Tactic"],
+      "riskLevel": "Dangerous",
+      "suspiciousKeywords": ["payment declined", "update billing", "terminated", "deleted"]
+    },
+    {
+      "id": "rto-alert-lihi",
+      "title": "RTO Alert + URL Shortener (Real-world pattern)",
+      "category": "Government Impersonation",
+      "icon": "id",
+      "message": "[RTO-Alert] You have a pending traffic fine for speeding. Pay now: https://lihi.cc/FeZno Drive responsibl",
+      "tactics": ["Authority Impersonation", "Urgency Pressure", "Fear Tactic"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["rto-alert", "pending", "traffic fine", "pay now", "responsibl", "lihi.cc"]
+    },
+    {
+      "id": "fake-echallan",
+      "title": "Fake Traffic Challan SMS",
+      "category": "Government Impersonation",
+      "icon": "id",
+      "message": "Traffic Police: You have a PENDING E-CHALLAN of Rs.1,500 on vehicle DL-04XX-1234. Pay immediately to avoid DL suspension and court notice.\n\nPay now: https://echallan-parivahan-pay.in/settle-challan?id=TP48291\n\n- Ministry of Road Transport",
+      "tactics": ["Authority Impersonation", "Urgency Pressure", "Fear Tactic", "Financial Threat"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["pending", "challan", "pay immediately", "dl suspension", "pay now", "echallan"]
+    },
+    {
+      "id": "url-phishing-login",
+      "title": "Phishing Login URL",
+      "category": "Credential Harvesting",
+      "type": "url",
+      "url": "http://secure-bank-verify-account.xyz/login?session=expired",
+      "message": "http://secure-bank-verify-account.xyz/login?session=expired",
+      "tactics": ["Authority Impersonation"],
+      "riskLevel": "Critical",
+      "suspiciousKeywords": ["secure", "verify", "login", "account", "xyz"]
+    }
+  ]
+}

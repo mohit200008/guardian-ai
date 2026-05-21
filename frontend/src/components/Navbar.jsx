@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from './ui/Button';
 
 const navLinks = [
+  { to: '/demo', label: 'Demo' },
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/analyze/message', label: 'Message' },
   { to: '/analyze/url', label: 'URL' },

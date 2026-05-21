@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
   --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-display: 'Syne', 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --color-guardian-950: #030712;
   --color-guardian-900: #0a0f1a;
@@ -25,17 +26,76 @@ body {
 
 #root { min-height: 100vh; }
 
+.font-display { font-family: var(--font-display); }
+
 .glass {
   background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(16px);
   border: 1px solid rgba(148, 163, 184, 0.12);
 }
 
-.glow-cyber { box-shadow: 0 0 40px rgba(34, 211, 238, 0.12); }
+.glass-hover {
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.glass-hover:hover {
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 32px rgba(34, 211, 238, 0.12);
+  transform: translateY(-2px);
+}
+
+.glow-cyber { box-shadow: 0 0 48px rgba(34, 211, 238, 0.18); }
+.glow-danger { box-shadow: 0 0 48px rgba(248, 113, 113, 0.35); }
 
 .grid-bg {
   background-image:
     linear-gradient(rgba(34, 211, 238, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(34, 211, 238, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
+}
+
+.gradient-mesh {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(34, 211, 238, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 50%, rgba(16, 185, 129, 0.08), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 80%, rgba(239, 68, 68, 0.06), transparent);
+}
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes danger-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+  50% { box-shadow: 0 0 48px rgba(239, 68, 68, 0.6); }
+}
+
+@keyframes threat-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(400%); opacity: 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-pulse-ring { animation: pulse-ring 2s ease-in-out infinite; }
+.animate-danger-pulse { animation: danger-pulse 1.5s ease-in-out infinite; }
+.animate-threat-pulse { animation: threat-pulse 2s ease-in-out infinite; }
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
 }

@@ -1,0 +1,30 @@
+{
+  "suspiciousPathSegments": [
+    "verify-account", "secure-login", "update-kyc", "account-suspended", "confirm-identity",
+    "wallet-verify", "banking-portal", "signin", "login-secure", "password-reset",
+    "customer-service", "account-update", "validate", "unlock-account",
+    "pay-challan", "e-challan", "challan-payment", "traffic-fine", "parivahan-sewa", "settle-challan"
+  ],
+  "suspiciousSubdomains": [
+    "secure-", "login-", "verify-", "account-", "support-", "update-", "bank-"
+  ],
+  "riskyTlds": [".xyz", ".top", ".click", ".tk", ".ml", ".ga", ".cf", ".gq", ".work", ".buzz"],
+  "brandTyposquats": [
+    { "brand": "paypal", "patterns": ["paypa1", "paypai", "paypaI", "paypal-secure", "paypal-verify"] },
+    { "brand": "amazon", "patterns": ["amaz0n", "amazonn", "amazon-verify", "amazon-security"] },
+    { "brand": "google", "patterns": ["g00gle", "google-verify", "accounts-google"] },
+    { "brand": "hdfc", "patterns": ["hdfc-secure", "hdfc-kyc", "hdfcbank-verify"] },
+    { "brand": "sbi", "patterns": ["sbi-online", "sbi-verify", "onlinesbi-secure"] }
+  ],
+  "phishingIndicators": [
+    "ip address in url", "excessive hyphens", "long subdomain chain", "@ symbol in url",
+    "non-https", "numeric-only domain"
+  ],
+  "highRiskKeywords": [
+    "verify", "secure", "login", "bank", "kyc", "otp", "wallet", "suspend", "unlock"
+  ],
+  "suspiciousUrlShorteners": [
+    "lihi.cc", "bit.ly", "tinyurl.com", "t.co", "goo.gl", "rb.gy", "is.gd", "cutt.ly", "shorturl.at"
+  ],
+  "notes": "Official India traffic challan payments use echallan.parivahan.gov.in — not SMS short links from personal numbers"
+}

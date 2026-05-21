@@ -2,6 +2,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { env, hasGeminiKey } from '../config/env.js';
 import { DEFAULT_GEMINI_MODEL } from '../config/constants.js';
 import { AppError } from '../middleware/errorHandler.js';
+import { parseGeminiJson } from '../utils/parseGeminiJson.js';
 
 /**
  * Gemini API integration layer.
@@ -42,7 +43,16 @@ export async function generateJson({ systemPrompt, userPrompt }) {
   try {
     const result = await model.generateContent(userPrompt);
     const text = result.response.text();
-    return JSON.parse(text);
+    try {
+      return parseGeminiJson(text);
+    } catch (parseErr) {
+      console.error('Gemini JSON parse error:', parseErr.message, text?.slice(0, 200));
+      throw new AppError(
+        'AI returned an invalid response. Please try again.',
+        502,
+        'GEMINI_PARSE_ERROR'
+      );
+    }
   } catch (err) {
     if (err instanceof AppError) throw err;
     const msg = err.message ?? '';

@@ -6,9 +6,11 @@ import {
   FileBarChart,
   Shield,
   Sparkles,
+  Play,
 } from 'lucide-react';
 
 const links = [
+  { to: '/demo', label: 'Demo Mode', icon: Play, highlight: true },
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/analyze/message', label: 'Message Analyzer', icon: MessageSquareWarning },
   { to: '/analyze/url', label: 'URL Analyzer', icon: Link2 },
@@ -29,7 +31,7 @@ export default function Sidebar() {
       </div>
 
       <nav className="flex-1 p-3 space-y-1">
-        {links.map(({ to, label, icon: Icon }) => (
+        {links.map(({ to, label, icon: Icon, highlight }) => (
           <NavLink
             key={to}
             to={to}
@@ -37,7 +39,9 @@ export default function Sidebar() {
               `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
                 isActive
                   ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
+                  : highlight
+                    ? 'text-amber-400/90 hover:bg-amber-500/10 border border-transparent hover:border-amber-500/20'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40'
               }`
             }
           >

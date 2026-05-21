@@ -6,6 +6,7 @@ import DashboardPage from '../pages/DashboardPage';
 import UrlAnalyzerPage from '../pages/UrlAnalyzerPage';
 import MessageAnalyzerPage from '../pages/MessageAnalyzerPage';
 import ResultsPage from '../pages/ResultsPage';
+import DemoModePage from '../pages/DemoModePage';
 
 export default function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function AppRoutes() {
         <Route path="/" element={<LandingPage />} />
       </Route>
       <Route element={<MainLayout />}>
+        <Route path="/demo" element={<DemoModePage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/analyze/url" element={<UrlAnalyzerPage />} />
         <Route path="/analyze/message" element={<MessageAnalyzerPage />} />

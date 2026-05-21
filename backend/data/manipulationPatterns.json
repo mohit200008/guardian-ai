@@ -1,0 +1,37 @@
+{
+  "tactics": [
+    {
+      "type": "Fear Tactic",
+      "weight": 12,
+      "keywords": ["suspended", "blocked", "frozen", "terminated", "legal action", "arrest", "lose access", "account closed", "permanently", "unauthorized", "fraud detected", "security breach"]
+    },
+    {
+      "type": "Urgency Pressure",
+      "weight": 14,
+      "keywords": ["urgent", "immediately", "within 24 hours", "within 2 hours", "act now", "expires today", "last chance", "time sensitive", "do not ignore", "right now", "verify now", "before midnight", "within 30 minutes", "pay now"]
+    },
+    {
+      "type": "Authority Impersonation",
+      "weight": 13,
+      "keywords": ["bank", "sbi", "hdfc", "icici", "paypal", "amazon", "flipkart", "government", "income tax", "uidai", "rbi", "official", "irs", "fedex", "dhl", "netflix", "apple support", "traffic police", "parivahan", "challan", "e-challan", "morth", "transport department", "rto", "rto-alert", "ncrb", "traffic fine", "regional transport"]
+    },
+    {
+      "type": "Financial Threat",
+      "weight": 11,
+      "keywords": ["payment failed", "refund pending", "transaction declined", "unusual activity", "withdrawal", "debit", "credit card", "wallet locked", "funds held", "charge", "billing problem", "traffic fine", "pending fine", "speeding"]
+    },
+    {
+      "type": "Panic Language",
+      "weight": 10,
+      "keywords": ["alert", "warning", "critical", "emergency", "failure to", "will result in", "cannot be reversed", "serious consequences", "your account will be"]
+    },
+    {
+      "type": "Suspicious Reward Offer",
+      "weight": 9,
+      "keywords": ["you have won", "congratulations", "lottery", "prize", "free gift", "claim reward", "cash prize", "selected winner", "bonus credited", "lucky customer"]
+    }
+  ],
+  "suspiciousKeywords": [
+    "click here", "verify", "confirm", "update kyc", "otp", "password", "login", "bit.ly", "tinyurl", "lihi.cc", "claim now", "limited offer", "wire transfer", "bitcoin", "gift card", "pay challan", "pending challan", "settle fine", "avoid penalty", "dl suspension", "pending traffic fine", "responsibl"
+  ]
+}

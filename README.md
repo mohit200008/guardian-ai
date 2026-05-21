@@ -74,22 +74,33 @@ Paste something suspicious — a text, email snippet, or URL — and the app hel
 
 ## Screenshots
 
-<!-- Add your screenshots below. Recommended: dashboard, scan results, trust score, mobile view -->
+### Dashboard
+
+Command center for scam message analysis, URL trust checks, and threat reports.
 
 <p align="center">
-  <i>Screenshots coming soon</i>
+  <img src="./docs/screenshots/dashboard.png" alt="Guardian AI Dashboard with System Ready status, Demo Mode, and analyzer tools" width="900" />
 </p>
 
-<!--
-### Dashboard
-![Dashboard](./docs/screenshots/dashboard.png)
+### Demo Mode — Kaggle-inspired threat corpus
 
-### Threat Scan Results
-![Scan Results](./docs/screenshots/scan-results.png)
+One-click scans with realistic banking, KYC, delivery, and reward scam examples for hackathon demos.
 
-### Mobile View
-![Mobile](./docs/screenshots/mobile.png)
--->
+<p align="center">
+  <img src="./docs/screenshots/demo-mode.png" alt="Guardian AI Demo Mode showing curated scam examples with Critical and Dangerous risk badges" width="900" />
+</p>
+
+### Threat Analysis — RTO / challan scam detection
+
+Real scan results for a suspicious traffic-fine SMS with a `lihi.cc` short link. Guardian AI flags URL shortener abuse, social engineering, and credential harvesting risk.
+
+<p align="center">
+  <img src="./docs/screenshots/threat-analysis-results.png" alt="Guardian AI Threat Analysis results showing URL shortener abuse, social engineering, and credential harvesting warnings" width="900" />
+</p>
+
+<p align="center">
+  <sub>Dashboard → Demo Mode → Live threat analysis · hybrid AI + pattern intelligence</sub>
+</p>
 
 ---
 

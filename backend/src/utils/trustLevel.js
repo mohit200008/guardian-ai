@@ -22,6 +22,10 @@ export function normalizeAnalysis(raw, type) {
     recoverySteps: raw.recoverySteps ?? [],
     confidence: raw.confidence ?? 75,
     domainAnalysis: raw.domainAnalysis ?? null,
+    manipulationTactics: raw.manipulationTactics ?? [],
+    highlightedPhrases: raw.highlightedPhrases ?? [],
+    scamCategory: raw.scamCategory ?? null,
+    fallbackMode: raw.fallbackMode ?? false,
     analyzedAt: new Date().toISOString(),
   };
 }
