@@ -102,15 +102,15 @@ Paste something suspicious — a text, email snippet, or URL — and the app hel
 
 1. Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey)
 
-2. Configure the server:
+2. Configure the backend:
 
 ```bash
-cd server
+cd backend
 cp .env.example .env
 # Set GEMINI_API_KEY=your_key
 ```
 
-3. Install and run:
+3. Install and run (from project root):
 
 ```bash
 npm install
@@ -118,8 +118,17 @@ npm run install:all
 npm run dev
 ```
 
+**Or run separately:**
+
+```bash
+npm run dev:backend   # http://localhost:3001
+npm run dev:frontend  # http://localhost:5173
+```
+
 - App: http://localhost:5173  
 - API health: http://localhost:3001/api/health  
+
+See [STRUCTURE.md](./STRUCTURE.md) for full folder layout.
 
 </details>
 
