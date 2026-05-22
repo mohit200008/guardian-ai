@@ -3,6 +3,7 @@ import { env, hasGeminiKey } from '../config/env.js';
 import { DEFAULT_GEMINI_MODEL } from '../config/constants.js';
 import { AppError } from '../middleware/errorHandler.js';
 import { parseGeminiJson } from '../utils/parseGeminiJson.js';
+import { withTimeout } from '../utils/withTimeout.js';
 
 /**
  * Gemini API integration layer.
@@ -41,7 +42,11 @@ export async function generateJson({ systemPrompt, userPrompt }) {
   });
 
   try {
-    const result = await model.generateContent(userPrompt);
+    const result = await withTimeout(
+      model.generateContent(userPrompt),
+      env.GEMINI_TIMEOUT_MS,
+      'Gemini API'
+    );
     const text = result.response.text();
     try {
       return parseGeminiJson(text);
@@ -67,9 +72,16 @@ export async function generateJson({ systemPrompt, userPrompt }) {
     }
     if (msg.includes('429') || msg.includes('quota')) {
       throw new AppError(
-        'Gemini quota exceeded. Wait a minute or set GEMINI_MODEL=gemini-1.5-flash in backend/.env',
+        'Gemini quota exceeded. Wait a minute or try again later.',
         429,
         'GEMINI_QUOTA'
+      );
+    }
+    if (msg.includes('timed out')) {
+      throw new AppError(
+        'AI analysis timed out. Please try again.',
+        504,
+        'GEMINI_TIMEOUT'
       );
     }
 

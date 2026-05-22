@@ -75,7 +75,7 @@ export async function analyzeMessage(content) {
       userPrompt: buildScamMessagePrompt(content, { manipulation, intel }),
     });
   } catch (err) {
-    if (err instanceof AppError && (err.code === 'GEMINI_QUOTA' || err.code === 'GEMINI_ERROR' || err.code === 'GEMINI_PARSE_ERROR')) {
+    if (err instanceof AppError && (err.code === 'GEMINI_QUOTA' || err.code === 'GEMINI_ERROR' || err.code === 'GEMINI_PARSE_ERROR' || err.code === 'GEMINI_TIMEOUT')) {
       console.warn('Gemini unavailable for message — using threat intel fallback');
       raw = buildFallbackMessageAnalysis(content, manipulation, intel);
     } else {
@@ -116,7 +116,7 @@ export async function analyzeUrl(url) {
       userPrompt: buildUrlTrustPrompt(url, { urlIntel, intel }),
     });
   } catch (err) {
-    if (err instanceof AppError && (err.code === 'GEMINI_QUOTA' || err.code === 'GEMINI_ERROR' || err.code === 'GEMINI_PARSE_ERROR')) {
+    if (err instanceof AppError && (err.code === 'GEMINI_QUOTA' || err.code === 'GEMINI_ERROR' || err.code === 'GEMINI_PARSE_ERROR' || err.code === 'GEMINI_TIMEOUT')) {
       console.warn('Gemini unavailable for URL — using threat intel fallback');
       raw = buildFallbackUrlAnalysis(url, urlIntel, intel, manipulation);
     } else {
