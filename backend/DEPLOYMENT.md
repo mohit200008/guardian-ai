@@ -67,9 +67,9 @@ Replace `your-app.vercel.app` with your real Vercel domain.
 
 1. Service → **Settings** → **Networking**
 2. Click **Generate Domain**
-3. You get a URL like: `https://guardian-ai-production.up.railway.app`
+3. You get a URL like: `https://guardian-ai-production-62fb.up.railway.app`
 
-Copy this — you will use it as `VITE_API_URL` on Vercel later.
+Copy this — you will use it as `VITE_API_BASE_URL` on Vercel later.
 
 ---
 
@@ -78,7 +78,7 @@ Copy this — you will use it as `VITE_API_URL` on Vercel later.
 ### Health check (browser or curl)
 
 ```
-GET https://YOUR-RAILWAY-DOMAIN.up.railway.app/api/health
+GET https://guardian-ai-production-62fb.up.railway.app/api/health
 ```
 
 Expected response:
@@ -96,13 +96,13 @@ Expected response:
 ### Root endpoint
 
 ```
-GET https://YOUR-RAILWAY-DOMAIN.up.railway.app/
+GET https://guardian-ai-production-62fb.up.railway.app/
 ```
 
 ### Analyze a URL
 
 ```bash
-curl -X POST https://YOUR-RAILWAY-DOMAIN.up.railway.app/api/analyze/url \
+curl -X POST https://guardian-ai-production-62fb.up.railway.app/api/analyze/url \
   -H "Content-Type: application/json" \
   -d "{\"url\":\"https://lihi.cc/FeZno\"}"
 ```
@@ -110,7 +110,7 @@ curl -X POST https://YOUR-RAILWAY-DOMAIN.up.railway.app/api/analyze/url \
 ### Demo threats list
 
 ```
-GET https://YOUR-RAILWAY-DOMAIN.up.railway.app/api/threats/demo
+GET https://guardian-ai-production-62fb.up.railway.app/api/threats/demo
 ```
 
 ---
@@ -130,13 +130,14 @@ GET https://YOUR-RAILWAY-DOMAIN.up.railway.app/api/threats/demo
 ## Connect Vercel frontend (later)
 
 1. Deploy `frontend/` to Vercel
-2. In Vercel → **Environment Variables**:
+2. In Vercel → **Environment Variables** (then **Redeploy** — required for Vite env vars):
    ```
-   VITE_API_URL=https://YOUR-RAILWAY-DOMAIN.up.railway.app
+   VITE_API_BASE_URL=https://guardian-ai-production-62fb.up.railway.app
    ```
+   Do **not** add `/api` at the end. Do **not** use your Vercel URL here.
 3. In Railway, update `FRONTEND_URL`:
    ```
-   https://your-vercel-app.vercel.app,http://localhost:5173
+   https://guardian-ai-olive.vercel.app,http://localhost:5173
    ```
 4. Redeploy both if needed
 
@@ -144,7 +145,7 @@ Local dev with production API:
 
 ```env
 # frontend/.env.local
-VITE_API_URL=https://YOUR-RAILWAY-DOMAIN.up.railway.app
+VITE_API_BASE_URL=https://guardian-ai-production-62fb.up.railway.app
 ```
 
 ---
@@ -160,6 +161,14 @@ VITE_API_URL=https://YOUR-RAILWAY-DOMAIN.up.railway.app
 
 - Railway must bind `0.0.0.0` (already configured in `src/server.js`)
 - Do not override `PORT` with a fixed value in Railway
+
+### Frontend: `Unexpected token 'T'` / `not valid JSON` / HTML response
+
+- **Cause:** Vercel is answering `/api/...` with an HTML page because `VITE_API_BASE_URL` is missing or wrong.
+- **Fix on Vercel:** set `VITE_API_BASE_URL=https://guardian-ai-production-62fb.up.railway.app` (no `/api` suffix).
+- **Redeploy Vercel** after saving env vars (Vite bakes env at build time).
+- Open browser DevTools → Network: requests should go to `*.up.railway.app`, not `*.vercel.app`.
+- Enable `VITE_DEBUG_API=true` on Vercel and redeploy to see `[Guardian API]` logs in the console.
 
 ### CORS error from frontend
 

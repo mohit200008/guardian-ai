@@ -40,6 +40,22 @@ The goal: make fraud prevention feel as simple as running a spell-check — fast
 
 ---
 
+## Live demo
+
+| | URL |
+|---|-----|
+| **App** | https://guardian-ai-olive.vercel.app |
+| **API** | https://guardian-ai-production-62fb.up.railway.app |
+| **Health** | https://guardian-ai-production-62fb.up.railway.app/api/health |
+
+**Vercel** → `VITE_API_BASE_URL=https://guardian-ai-production-62fb.up.railway.app` (then redeploy)
+
+**Railway** → `FRONTEND_URL=https://guardian-ai-olive.vercel.app,http://localhost:5173` (then redeploy if changed)
+
+See [backend/DEPLOYMENT.md](./backend/DEPLOYMENT.md) for full setup.
+
+---
+
 ## Tech Stack
 
 | Layer | Technologies |
@@ -47,7 +63,7 @@ The goal: make fraud prevention feel as simple as running a spell-check — fast
 | **Frontend** | React, Vite, Tailwind CSS, Framer Motion |
 | **Backend** | Node.js, Express |
 | **AI** | Google Gemini (via AI Studio) |
-| **Deploy** | Vercel (client), API hosting TBD |
+| **Deploy** | [Vercel](https://guardian-ai-olive.vercel.app) (frontend), [Railway](https://guardian-ai-production-62fb.up.railway.app) (API) |
 | **Optional** | Firebase / Supabase for history & auth |
 
 ---
