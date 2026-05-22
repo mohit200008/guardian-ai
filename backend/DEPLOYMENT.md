@@ -135,6 +135,7 @@ GET https://guardian-ai-production-62fb.up.railway.app/api/threats/demo
    VITE_API_BASE_URL=https://guardian-ai-production-62fb.up.railway.app
    ```
    Do **not** add `/api` at the end. Do **not** use your Vercel URL here.
+   **Must include `https://`** — `guardian-ai-production-62fb.up.railway.app` alone will break (requests hit Vercel).
 3. In Railway, update `FRONTEND_URL`:
    ```
    https://guardian-ai-olive.vercel.app,http://localhost:5173

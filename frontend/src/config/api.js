@@ -9,12 +9,16 @@ const RAW_BASE =
   import.meta.env.VITE_API_URL ||
   '';
 
-/** Strip trailing slashes and accidental /api suffix on the base */
+/** Strip trailing slashes, fix missing https://, remove accidental /api suffix */
 function normalizeBase(url) {
   if (!url) return '';
   let base = url.trim().replace(/\/+$/, '');
   if (base.endsWith('/api')) {
     base = base.slice(0, -4);
+  }
+  // Without protocol, fetch() treats host as a path on the Vercel origin → HTML 404
+  if (base && !/^https?:\/\//i.test(base)) {
+    base = `https://${base}`;
   }
   return base;
 }
@@ -37,7 +41,7 @@ export function buildApiUrl(path) {
     return route;
   }
 
-  return `${base}${route}`;
+  return new URL(route, `${base}/`).href;
 }
 
 export function isApiConfigured() {

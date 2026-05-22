@@ -35,9 +35,12 @@ async function parseApiResponse(res, requestUrl) {
   const looksLikeHtml = /^\s*</.test(text) || contentType.includes('text/html');
 
   if (looksLikeHtml || (!contentType.includes('application/json') && text && !text.trimStart().startsWith('{'))) {
-    const hint = !getApiBaseUrl()
+    const base = getApiBaseUrl();
+    const hint = !base
       ? 'VITE_API_BASE_URL is missing — requests are hitting the frontend, not Railway.'
-      : 'Check VITE_API_BASE_URL points to Railway (not your Vercel URL) and has no extra /api suffix.';
+      : base.includes('vercel.app')
+        ? 'VITE_API_BASE_URL must be your Railway URL, not the Vercel app URL.'
+        : 'VITE_API_BASE_URL must start with https:// (e.g. https://guardian-ai-production-62fb.up.railway.app).';
 
     throw new ApiError(
       `Invalid API response (expected JSON, got HTML/text). ${hint}`,
