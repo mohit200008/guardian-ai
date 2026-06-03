@@ -68,6 +68,26 @@ See [backend/DEPLOYMENT.md](./backend/DEPLOYMENT.md) for full setup.
 
 ---
 
+## Architecture
+
+User Input
+↓
+Threat Intelligence Layer
+↓
+Manipulation Detection Engine
+↓
+Gemini AI Analysis
+↓
+Hybrid Trust Score Engine
+↓
+Explainable Threat Report
+↓
+Recovery Guidance
+
+Guardian AI combines deterministic threat intelligence with Gemini-powered reasoning to generate explainable, real-time fraud analysis.
+
+---
+
 ## What It Does
 
 Guardian AI acts as your **second pair of eyes** on the internet.
@@ -85,6 +105,16 @@ Paste something suspicious — a text, email snippet, or URL — and the app hel
 | Recovery guidance | What to do if you may have been targeted |
 
 > We’re iterating phase-by-phase. Not every feature is public yet — follow the repo for updates.
+
+---
+
+## Why Guardian AI Matters
+
+Cybercrime and phishing attacks continue to grow in both frequency and sophistication. Modern scams increasingly use AI-generated content, emotional manipulation, urgency, and impersonation tactics to deceive users.
+
+Guardian AI was created to help everyday users make safer decisions online by providing explainable, human-friendly fraud analysis before they click, pay, or share sensitive information.
+
+Our vision is to make digital trust as accessible and intuitive as spell-checking a document.
 
 ---
 
@@ -186,6 +216,34 @@ Contributions are welcome — especially during hackathon season.
 - Tests for API validation  
 
 Questions or ideas? Open an [issue](https://github.com/mohit200008/guardian-ai/issues).
+
+---
+
+## AI Tools & Development Workflow
+
+Guardian AI was developed during the Microsoft Build AI Hackathon using modern AI-assisted engineering workflows.
+
+### AI Tools Used
+
+- GitHub Copilot for code suggestions, prototyping, and developer productivity
+- Cursor AI for code generation, debugging, refactoring, documentation, and rapid iteration
+- Google Gemini 2.5 Flash for scam reasoning, risk analysis, and explainable threat reports
+
+### Human Engineering Contributions
+
+While AI tools accelerated development, all major decisions regarding:
+
+- System architecture
+- Threat intelligence design
+- Trust score methodology
+- Scam detection logic
+- UI/UX design
+- Deployment architecture
+- Product strategy
+
+were designed, implemented, tested, and validated by the development team.
+
+Guardian AI demonstrates how AI-assisted development combined with human judgment can be used to build practical, production-ready cybersecurity solutions.
 
 ---
 
