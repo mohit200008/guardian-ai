@@ -70,19 +70,21 @@ See [backend/DEPLOYMENT.md](./backend/DEPLOYMENT.md) for full setup.
 
 ## Architecture
 
+```text
 User Input
-↓
+    ↓
 Threat Intelligence Layer
-↓
+    ↓
 Manipulation Detection Engine
-↓
+    ↓
 Gemini AI Analysis
-↓
+    ↓
 Hybrid Trust Score Engine
-↓
+    ↓
 Explainable Threat Report
-↓
+    ↓
 Recovery Guidance
+```
 
 Guardian AI combines deterministic threat intelligence with Gemini-powered reasoning to generate explainable, real-time fraud analysis.
 
